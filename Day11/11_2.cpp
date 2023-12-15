@@ -119,7 +119,7 @@ std::vector<Monkey> getMonkeys(std::vector<std::string> rows)
     return monkeys;
 }
 
-void handleRound(std::vector<Monkey> &monkeys)
+void handleRound(std::vector<Monkey> &monkeys, long long mod)
 {
     for (Monkey &monkey : monkeys)
     {
@@ -128,7 +128,7 @@ void handleRound(std::vector<Monkey> &monkeys)
             long long item = monkey.items[0];
             monkey.items.erase(monkey.items.begin());
             monkey.inspectedItems++;
-            long long result = monkey.Operation(item) % (5 * 7 * 13 * 11 * 3 * 2 * 17 * 19); //! that's all changes i make for part 2
+            long long result = monkey.Operation(item) % mod; //! that's all changes i make for part 2
             monkeys[monkey.Test(result)].items.push_back(result);
         }
     }
@@ -185,6 +185,9 @@ int main()
     std::vector<Monkey> monkeys = getMonkeys(rows);
     // for(Monkey monkeys: monkeys)
     //     monkeys.Print();
+    long long mod = 1;
+    for (Monkey &monkey : monkeys)
+            mod *= monkey.divisibleBy;
 
     for (int i = 0; i < 10000; i++)
     {
@@ -199,7 +202,7 @@ int main()
         // }
         // std::cout << std::endl;
         // std::cout << std::endl;
-        handleRound(monkeys);
+        handleRound(monkeys, mod);
     }
 
     std::cout << "Monkey business: " << multiplyBiggestInspections(monkeys) << std::endl;
