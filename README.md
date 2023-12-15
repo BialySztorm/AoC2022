@@ -7,6 +7,4 @@ AoC Times:
 
 Post AoC Times:
 
-![image](https://github.com/BialySztorm/AoC2022/assets/70662105/3018bb59-4436-4a60-a61b-ed1ac30266a4)
-
-
+![Zrzut ekranu 2023-12-15 215404](https://github.com/BialySztorm/AoC2022/assets/70662105/40502c23-db1b-4376-845a-b1f81db0a8ac)
